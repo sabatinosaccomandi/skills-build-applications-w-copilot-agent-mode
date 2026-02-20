@@ -14,6 +14,14 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
+3. (Optional) Set environment variables for development:
+```bash
+export DJANGO_DEBUG=True
+export DJANGO_SECRET_KEY="your-secret-key-here"
+```
+
+Note: For production, always set `DJANGO_DEBUG=False` and use a secure secret key.
+
 ## Health Check API
 
 The health check API endpoint is available at `/api/health/` and returns a simple status to verify the API is running.
@@ -68,6 +76,8 @@ The health check API has comprehensive unit tests covering:
 ## Running the Development Server
 
 ```bash
+# Set DEBUG to True for development
+export DJANGO_DEBUG=True
 python manage.py runserver 8000
 ```
 
