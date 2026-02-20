@@ -95,7 +95,10 @@ Expected response:
 
 - The SECRET_KEY can be configured via the `DJANGO_SECRET_KEY` environment variable
 - All dependencies are kept up to date to avoid known security vulnerabilities
+- **Django 4.2.28**: Patched against DoS and SQL injection vulnerabilities
+- **sqlparse 0.5.0**: Patched against DoS vulnerabilities
 - CodeQL security scanning shows no vulnerabilities
+- GitHub Advisory Database: No vulnerabilities found
 
 ## Test Coverage
 
