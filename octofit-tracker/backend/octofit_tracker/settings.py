@@ -26,6 +26,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-ldd%0&huzmebh1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
+# Ensure SECRET_KEY is set in production
+if not DEBUG and SECRET_KEY.startswith('django-insecure-'):
+    raise ValueError(
+        'DJANGO_SECRET_KEY environment variable must be set when DEBUG is False. '
+        'Generate a secure key with: python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"'
+    )
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 if os.environ.get('CODESPACE_NAME'):
     ALLOWED_HOSTS.append(f"{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
