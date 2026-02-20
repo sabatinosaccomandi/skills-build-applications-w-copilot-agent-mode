@@ -54,6 +54,21 @@ curl http://localhost:8000/api/health/
 
 The application is configured to work in both local development and GitHub Codespaces environments. The `ALLOWED_HOSTS` setting automatically includes the Codespaces URL when running in a Codespace.
 
+### Environment Variables
+
+The following environment variables can be used to configure the application:
+
+- **DJANGO_SECRET_KEY**: Secret key for Django (defaults to development key if not set)
+- **DJANGO_DEBUG**: Set to 'False' to disable debug mode in production (defaults to 'True')
+- **CODESPACE_NAME**: Automatically set by GitHub Codespaces, used to configure ALLOWED_HOSTS and CORS
+
+**Example for production:**
+```bash
+export DJANGO_SECRET_KEY='your-production-secret-key'
+export DJANGO_DEBUG='False'
+python manage.py runserver
+```
+
 ## Technologies
 
 - Django 4.1.7
