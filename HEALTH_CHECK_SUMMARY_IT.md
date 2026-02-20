@@ -9,7 +9,8 @@
 ### 1. Struttura del Progetto
 - Creata la struttura di directory `octofit-tracker/backend/`
 - Configurato l'ambiente virtuale Python (`venv`)
-- Installate le dipendenze necessarie (Django, Django REST Framework, Django CORS Headers)
+- Installate le dipendenze necessarie (Django 4.2.26, Django REST Framework, Django CORS Headers)
+- **Aggiornamento di Sicurezza**: Django aggiornato a 4.2.26 per risolvere vulnerabilità critiche (SQL injection e DoS)
 
 ### 2. Progetto Django
 - Creato il progetto Django `octofit_tracker`

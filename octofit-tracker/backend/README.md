@@ -71,6 +71,6 @@ python manage.py runserver
 
 ## Technologies
 
-- Django 4.1.7
+- Django 4.2.26 (patched for security vulnerabilities)
 - Django REST Framework 3.14.0
 - Django CORS Headers 4.5.0
