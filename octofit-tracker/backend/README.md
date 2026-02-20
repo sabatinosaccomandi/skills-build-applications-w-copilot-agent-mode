@@ -76,6 +76,21 @@ The backend supports both local development and GitHub Codespaces:
 - **Local:** API runs on `http://localhost:8000`
 - **Codespaces:** Automatically configures for `https://{CODESPACE_NAME}-8000.app.github.dev`
 
+### Environment Variables
+
+The following environment variables can be configured:
+
+- `DJANGO_SECRET_KEY`: Secret key for Django (defaults to development key if not set)
+- `DJANGO_DEBUG`: Set to 'False' to disable debug mode in production (defaults to 'True')
+- `CODESPACE_NAME`: Automatically set by GitHub Codespaces for hostname configuration
+
+**Production Configuration Example:**
+```bash
+export DJANGO_SECRET_KEY='your-production-secret-key-here'
+export DJANGO_DEBUG='False'
+python manage.py runserver
+```
+
 ## Technology Stack
 
 - Django 4.2.28 (security patched)
