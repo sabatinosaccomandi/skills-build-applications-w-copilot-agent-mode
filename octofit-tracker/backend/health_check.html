@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OctoFit Tracker - Health Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .endpoint {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }
+        .response {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏋️ OctoFit Tracker API <span class="status-badge" id="status">Checking...</span></h1>
+        
+        <div class="endpoint">
+            <strong>Endpoint:</strong> GET /api/health/
+        </div>
+
+        <button onclick="checkHealth()">Check API Health</button>
+
+        <div id="response-container" style="display: none;">
+            <h3>API Response:</h3>
+            <div class="response">
+                <pre id="response"></pre>
+            </div>
+            <div class="timestamp" id="timestamp"></div>
+        </div>
+    </div>
+
+    <script>
+        async function checkHealth() {
+            try {
+                const response = await fetch('http://localhost:8000/api/health/');
+                const data = await response.json();
+                
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('status').textContent = data.status.toUpperCase();
+                document.getElementById('status').style.backgroundColor = '#28a745';
+                document.getElementById('response-container').style.display = 'block';
+                document.getElementById('timestamp').textContent = `Last checked: ${new Date().toLocaleString()}`;
+            } catch (error) {
+                document.getElementById('response').textContent = 'Error: ' + error.message;
+                document.getElementById('status').textContent = 'ERROR';
+                document.getElementById('status').style.backgroundColor = '#dc3545';
+                document.getElementById('response-container').style.display = 'block';
+            }
+        }
+
+        // Auto-check on page load
+        window.onload = checkHealth;
+    </script>
+</body>
+</html>
