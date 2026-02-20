@@ -78,7 +78,9 @@ The backend supports both local development and GitHub Codespaces:
 
 ## Technology Stack
 
-- Django 4.1.7
+- Django 4.2.28 (security patched)
 - Django REST Framework 3.14.0
 - django-cors-headers 4.5.0
 - Python 3.x
+
+All dependencies are kept up-to-date with security patches to ensure the application is protected against known vulnerabilities.
