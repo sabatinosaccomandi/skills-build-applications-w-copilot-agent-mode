@@ -76,7 +76,9 @@ The application is configured to work in GitHub Codespaces. The `ALLOWED_HOSTS` 
 
 ## Technologies
 
-- Django 4.1.7
+- Django 4.2.26 (security patched)
 - Django REST Framework 3.14.0
 - django-cors-headers 4.5.0
 - Python 3.12+
+
+**Security**: All dependencies have been updated to patched versions to address known vulnerabilities.
